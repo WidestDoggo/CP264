@@ -13,9 +13,11 @@
 
 #include "falling_time.h"
 
+int time;
+
 int falling_time(int distance) {
 
-    // your code here
+    time = sqrt(2 * distance / GRAVITY_ACCEL) ;
 
-    return 0;
+    return time;
 }
