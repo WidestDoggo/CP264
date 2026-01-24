@@ -10,10 +10,16 @@
  * -------------------------------------
  */
 #include "sum_even.h"
+int sum;
 
 int sum_even(int n) {
 
-    // your code here
+    for (int i = 0; i <= n; i++) {
+      if (i % 2 == 0) {
+        sum += i;
+      }
 
-    return 0;
+    }
+
+    return sum;
 }

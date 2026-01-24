@@ -12,10 +12,12 @@
 #include <math.h>
 
 #include "mow_lawn.h"
+double area;
+double mowingTime;
 
 int mow_lawn(double width, double length, double speed) {
+    area = width * length;
+    mowingTime = area / speed;
 
-    // your code here
-
-    return 0;
+    return mowingTime;
 }
