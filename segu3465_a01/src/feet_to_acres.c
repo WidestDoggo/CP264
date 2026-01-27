@@ -13,10 +13,12 @@
 
 #include "feet_to_acres.h"
 
+double acres;
+
 double feet_to_acres(int square_feet) {
 
-    // your code here
+    acres = square_feet / 43560.0;
 
-    return 0.0;
+    return acres;
 }
 

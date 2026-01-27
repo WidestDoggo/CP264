@@ -10,10 +10,14 @@
  * -------------------------------------
  */
 #include "sum_partial_harmonic.h"
+double parSum;
 
 double sum_partial_harmonic(int n) {
 
-    // your code here
+    for (int i = 0; i <= n; i++) {
+        parSum += 1/i;
+    }
+      
 
-    return 0.0;
+    return parSum;
 }

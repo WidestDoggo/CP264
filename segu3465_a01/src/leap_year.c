@@ -12,8 +12,14 @@
 #include "leap_year.h"
 
 bool leap_year(int year) {
-
-    // your code here
-
+    if (year % 400 == 0) {
+        return true;
+    }
+    if (year % 100 == 0) {
+        return false;
+    }
+    if (year % 4 == 0) {
+        return true;
+    }
     return false;
 }

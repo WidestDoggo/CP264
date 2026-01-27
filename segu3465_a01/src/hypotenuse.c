@@ -13,9 +13,11 @@
 
 #include "hypotenuse.h"
 
+double side3;
+
 double hypotenuse(double side1, double side2) {
 
-    // your code here
+    side3 = sqrt(pow(side1, 2.0) + pow(side2, 2.0));
 
-    return 0.0;
+    return side3;
 }
