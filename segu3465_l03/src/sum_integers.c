@@ -20,5 +20,9 @@ int sum_integers(void) {
         sum += value;
     }
     
+    // Clear leftover output
+    int ch;
+    while ((ch = getchar()) != '\n' && ch != EOF);
+
     return sum;
 }

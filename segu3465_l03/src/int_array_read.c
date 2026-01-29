@@ -12,6 +12,7 @@
 
 void int_array_read(int *array, int size) {
 
-    // your code here
+    printf("Enter %d values for an array of int.\n");
+
 
 }
