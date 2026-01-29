@@ -12,7 +12,7 @@
 
 void int_array_read(int *array, int size) {
 
-    printf("Enter %d values for an array of int.\n");
+    printf("Enter %d values for an array of int.\n", size);
 
 
 }
