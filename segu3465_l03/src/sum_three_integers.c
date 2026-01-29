@@ -2,7 +2,7 @@
  * -------------------------------------
  * @file  functions.c
  * -------------------------------------
- * @author name, id, email
+ * @author Jack Seguin, 169083465, segu3465@mylaurier.ca
  *
  * @version 2025-09-01
  *
