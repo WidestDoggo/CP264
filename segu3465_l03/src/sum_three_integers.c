@@ -2,7 +2,7 @@
  * -------------------------------------
  * @file  functions.c
  * -------------------------------------
- * @author name, id, email
+ * @author Jack Seguin, 169083465, segu3465@mylaurier.ca
  *
  * @version 2025-09-01
  *
@@ -11,12 +11,15 @@
 #include "functions.h"
 
 int sum_three_integers(void) {
-    int value;
-    int sum = 0;
+    int a, b, c;
+    int ch;
+    printf("Enter three comma-separated integers: \n");
 
-    printf("Enter three comma-separated integers: ");
+    while (scanf("%d,%d,%d", &a, &b, &c) != 3){
+        printf("The integers were not properly entered.\n");
+        while ((ch = getchar()) != '\n' && ch != EOF);
+    }
     
-    
+    return a + b + c;
 
-    return 0;
-}
+}   
