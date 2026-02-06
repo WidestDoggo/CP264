@@ -11,8 +11,12 @@
 #include "functions.h"
 
 int sum_three_integers(void) {
+    int value;
+    int sum = 0;
 
-    // your code here
+    printf("Enter three comma-separated integers: ");
+    
+    
 
     return 0;
 }
