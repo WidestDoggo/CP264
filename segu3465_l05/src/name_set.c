@@ -13,77 +13,98 @@
 
 name_set* name_set_initialize() {
 
-    name_set *set = malloc(sizeof(name_set));
-    if (set != NULL) {
-        set->front = NULL;
+    // Allocate header.
+    name_set *set = (name_set*) malloc(sizeof(name_set));
+    if(set == NULL) {
+        return NULL;
     }
+
+    // Initialize empty set.
+    set->front = NULL;
+    set->rear = NULL;
+    set->count = 0;
 
     return set;
 }
 
 int name_set_free(name_set **source) {
 
-    int count = 0;
-
-    if (source != NULL && *source != NULL) {
-
-        name_node *current = (*source)->front;
-
-        while (current != NULL) {
-            name_node *temp = current;
-            current = current->next;
-
-            free(temp->first_name);
-            free(temp->last_name);
-            free(temp);
-            count++;
-        }
-
-        free(*source);
-        *source = NULL;
+    if(source == NULL || *source == NULL) {
+        return 0;
     }
 
-    return count;
+    int freed = 0;
+
+    // Free all name nodes.
+    name_node *node = (*source)->front;
+    while(node != NULL) {
+        name_node *next = node->next;
+        free(node);
+        node = next;
+        freed += 1;
+    }
+
+    // Free header node.
+    free(*source);
+    *source = NULL;
+    freed += 1;
+
+    return freed;
 }
 
 bool name_set_append(name_set *source, const char *first_name, const char *last_name) {
 
-    if (source == NULL || first_name == NULL || last_name == NULL) {
+    if(source == NULL || first_name == NULL || last_name == NULL) {
         return false;
     }
 
-    if (name_set_contains(source, first_name, last_name)) {
+    // Only insert unique names.
+    if(name_set_contains(source, first_name, last_name)) {
         return false;
     }
 
-    name_node *node = malloc(sizeof(name_node));
-    if (node == NULL) {
+    // Create new node.
+    name_node *node = (name_node*) malloc(sizeof(name_node));
+    if(node == NULL) {
         return false;
     }
 
-    node->first_name = strdup(first_name);
-    node->last_name = strdup(last_name);
-    node->next = source->front;
+    // Copy strings safely.
+    strncpy(node->first_name, first_name, NAME_LEN - 1);
+    node->first_name[NAME_LEN - 1] = '\0';
 
-    source->front = node;
+    strncpy(node->last_name, last_name, NAME_LEN - 1);
+    node->last_name[NAME_LEN - 1] = '\0';
 
+    node->next = NULL;
+
+    // Append to rear.
+    if(source->rear == NULL) {
+        // Empty set.
+        source->front = node;
+        source->rear = node;
+    } else {
+        source->rear->next = node;
+        source->rear = node;
+    }
+
+    source->count += 1;
     return true;
 }
 
 bool name_set_contains(const name_set *source, const char *first_name, const char *last_name) {
 
-    if (source == NULL) {
+    if(source == NULL || first_name == NULL || last_name == NULL) {
         return false;
     }
 
-    name_node *current = source->front;
+    name_node *node = source->front;
 
-    while (current != NULL) {
-        if (strcmp(current->first_name, first_name) == 0 &&
-            strcmp(current->last_name, last_name) == 0) {
+    while(node != NULL) {
+        if(strcmp(node->first_name, first_name) == 0 && strcmp(node->last_name, last_name) == 0) {
             return true;
         }
-        current = current->next;
+        node = node->next;
     }
 
     return false;
@@ -91,19 +112,11 @@ bool name_set_contains(const name_set *source, const char *first_name, const cha
 
 int name_set_count(const name_set *source) {
 
-    if (source == NULL) {
+    if(source == NULL) {
         return 0;
     }
 
-    int count = 0;
-    name_node *current = source->front;
-
-    while (current != NULL) {
-        count++;
-        current = current->next;
-    }
-
-    return count;
+    return source->count;
 }
 
 void name_set_print(const name_set *source) {
