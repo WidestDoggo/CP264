@@ -1,0 +1,113 @@
+/**
+ * -------------------------------------
+ * @file  testing.txt
+ * Assignment 3 sample testing
+ * -------------------------------------
+ * @author name, id, email
+ *
+ * @version 2025-09-01
+ *
+ * -------------------------------------
+ */
+===========================================
+Testing stack_dynamic
+-------------------------------------------
+stack_initialize(&source, 9):
+stack_print(&source)
+capacity: 9
+top: -1
+  values:
+-------------------------------------------
+stack_empty(&source): true
+-------------------------------------------
+stack_push(&source, 2)
+stack_push(&source, 4)
+stack_push(&source, 1)
+stack_push(&source, 7)
+stack_push(&source, 4)
+stack_push(&source, 2)
+stack_push(&source, 9)
+stack_push(&source, 3)
+stack_push(&source, 6)
+stack_push(&source, 6)
+stack_push(&source, 8)
+stack_print(&source)
+capacity: 19
+top: 10
+  values:
+8
+6
+6
+3
+9
+2
+4
+7
+1
+4
+2
+-------------------------------------------
+stack_empty(&source): false
+-------------------------------------------
+stack_peek(&source, &item)
+item: 8
+-------------------------------------------
+stack_initialize(&target, 9):
+stack_copy(&target, &source)
+stack_print(&target)
+capacity: 19
+top: 10
+  values:
+8
+6
+6
+3
+9
+2
+4
+7
+1
+4
+2
+-------------------------------------------
+stack_equal(&source, &target): true
+stack_pop(&target, &item)
+stack_equal(&source, &target): false
+-------------------------------------------
+stack_pop(&source, &item)
+  item: 8
+stack_pop(&source, &item)
+  item: 6
+stack_pop(&source, &item)
+  item: 6
+stack_pop(&source, &item)
+  item: 3
+stack_pop(&source, &item)
+  item: 9
+stack_pop(&source, &item)
+  item: 2
+stack_pop(&source, &item)
+  item: 4
+stack_pop(&source, &item)
+  item: 7
+stack_pop(&source, &item)
+  item: 1
+stack_pop(&source, &item)
+  item: 4
+stack_pop(&source, &item)
+  item: 2
+
+stack_print(&source)
+capacity: 19
+top: -1
+  values:
+===========================================
+Testing queue_dynamic
+-------------------------------------------
+===========================================
+Testing pq_dynamic
+-------------------------------------------
+===========================================
+Testing list_dynamic
+-------------------------------------------
+ 
